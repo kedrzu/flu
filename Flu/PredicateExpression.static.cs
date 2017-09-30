@@ -16,7 +16,7 @@ namespace Flu
         /// Predicate always being false
         /// </summary>
         public static PredicateExpression<object> False = new PredicateExpression<object>(f => false);
-        
+
         /// <summary>
         /// Creates a composite predicate with alternative (OR) operator.
         /// </summary>
@@ -25,10 +25,10 @@ namespace Flu
         /// <returns>New predicate being a composite of the given two</returns>
         public static PredicateExpression<T> Or<T>(this IPredicateExpression<T> predicate1, PredicateExpression<T> predicate2)
         {
-            return predicate1.Or((IPredicateExpression<T>)predicate2);
+            return ExpressionHelper.Or<T>(predicate1.Expression, predicate2.Expression);
         }
 
-		/// <summary>
+        /// <summary>
         /// Creates a composite predicate with alternative (OR) operator.
         /// </summary>
         /// <param name="predicate1">First predicate</param>
@@ -36,8 +36,7 @@ namespace Flu
         /// <returns>New predicate being a composite of the given two</returns>
         public static PredicateExpression<T> Or<T>(this IPredicateExpression<T> predicate1, IPredicateExpression<T> predicate2)
         {
-            var invokedExpr = Expression.Invoke(predicate2.Expression, predicate1.Expression.Parameters);
-            return Expression.Lambda<Func<T, bool>>(Expression.OrElse(predicate1.Expression.Body, invokedExpr), predicate1.Expression.Parameters);
+            return ExpressionHelper.Or<T>(predicate1.Expression, predicate2.Expression);
         }
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace Flu
         /// <returns>New predicate being a composite of the given two</returns>
         public static PredicateExpression<T> And<T>(this IPredicateExpression<T> predicate1, PredicateExpression<T> predicate2)
         {
-            return predicate1.And((IPredicateExpression<T>)predicate2);
+            return ExpressionHelper.And<T>(predicate1.Expression, predicate2.Expression);
         }
 
         /// <summary>
@@ -59,8 +58,7 @@ namespace Flu
         /// <returns>New predicate being a composite of the given two</returns>
         public static PredicateExpression<T> And<T>(this IPredicateExpression<T> predicate1, IPredicateExpression<T> predicate2)
         {
-            var invokedExpr = Expression.Invoke(predicate2.Expression, predicate1.Expression.Parameters);
-            return Expression.Lambda<Func<T, bool>>(Expression.AndAlso(predicate1.Expression.Body, invokedExpr), predicate1.Expression.Parameters);
+            return ExpressionHelper.And<T>(predicate1.Expression, predicate2.Expression);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace Flu
         /// <returns>New predicate being a negation of the given predicate</returns>
         public static PredicateExpression<T> Not<T>(this PredicateExpression<T> predicate)
         {
-            return Expression.Lambda<Func<T, bool>>(Expression.Not(predicate.Expression.Body), predicate.Expression.Parameters);
+            return ExpressionHelper.Not(predicate.Expression);
         }
 
         /// <summary>
