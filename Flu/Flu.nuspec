@@ -4,13 +4,13 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
-    <licenseUrl>$PackageLicenseUrl$</licenseUrl>
-    <projectUrl>$PackageLicenseUrl$</projectUrl>
+    <authors>Michał Kędrzyński</authors>
+    <owners>Michał Kędrzyński</owners>
+    <licenseUrl>https://github.com/kedrzu/flu/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/kedrzu/flu</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>$PackageReleaseNotes$</releaseNotes>
+    <releaseNotes>Library kick off</releaseNotes>
     <copyright>$Copyright$</copyright>
     <tags></tags>
   </metadata>
