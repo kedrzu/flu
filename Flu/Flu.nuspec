@@ -12,6 +12,6 @@
     <description>$description$</description>
     <releaseNotes>$PackageReleaseNotes$</releaseNotes>
     <copyright>$Copyright$</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags></tags>
   </metadata>
 </package>
