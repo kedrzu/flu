@@ -19,6 +19,6 @@ namespace Flu
         {
             Expression = expr;
             Function = func;
-        }
+        } 
     }
 }
